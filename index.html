@@ -35,7 +35,6 @@
     #texto {
       font-size: 22px;
       min-height: 120px;
-      transition: 0.3s;
     }
 
     button {
@@ -54,6 +53,14 @@
       transform: scale(1.1);
     }
 
+    img {
+      width: 150px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+      display: none;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
     .heart {
       position: absolute;
       font-size: 20px;
@@ -61,14 +68,8 @@
     }
 
     @keyframes subir {
-      0% {
-        transform: translateY(100vh);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh);
-        opacity: 0;
-      }
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
     }
   </style>
 </head>
@@ -76,11 +77,13 @@
 <body>
 
   <div class="container">
+    <img id="foto" src="foto.jpg">
+
     <h1>Oi Heloisa ❤️</h1>
 
     <div id="texto"></div>
 
-    <button onclick="mostrarMensagens()">Clica aqui 💖</button>
+    <button id="botao" onclick="iniciar()">Clica aqui 💖</button>
   </div>
 
   <script>
@@ -98,6 +101,12 @@
     ];
 
     let i = 0;
+
+    function iniciar() {
+      document.getElementById("botao").style.display = "none"; // botão some
+      document.getElementById("foto").style.display = "block"; // mostra foto
+      mostrarMensagens();
+    }
 
     function mostrarMensagens() {
       if (i < mensagens.length) {
