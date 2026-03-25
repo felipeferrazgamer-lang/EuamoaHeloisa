@@ -54,11 +54,13 @@
     }
 
     img {
-      width: 150px;
+      width: 170px;
       border-radius: 15px;
-      margin-bottom: 15px;
+      margin-top: 20px;
       display: none;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      opacity: 0;
+      transition: opacity 1s ease;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
     }
 
     .heart {
@@ -77,13 +79,13 @@
 <body>
 
   <div class="container">
-    <img id="foto" src="foto.jpg">
-
     <h1>Oi Heloisa ❤️</h1>
 
     <div id="texto"></div>
 
     <button id="botao" onclick="iniciar()">Clica aqui 💖</button>
+
+    <img id="foto" src="foto.jpg">
   </div>
 
   <script>
@@ -103,8 +105,7 @@
     let i = 0;
 
     function iniciar() {
-      document.getElementById("botao").style.display = "none"; // botão some
-      document.getElementById("foto").style.display = "block"; // mostra foto
+      document.getElementById("botao").style.display = "none";
       mostrarMensagens();
     }
 
@@ -113,7 +114,18 @@
         document.getElementById("texto").innerHTML = mensagens[i];
         i++;
         setTimeout(mostrarMensagens, 2000);
+      } else {
+        mostrarFoto();
       }
+    }
+
+    function mostrarFoto() {
+      const foto = document.getElementById("foto");
+      foto.style.display = "block";
+
+      setTimeout(() => {
+        foto.style.opacity = "1"; // efeito fade-in
+      }, 100);
     }
 
     // corações animados
